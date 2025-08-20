@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Page 5</title>
+  <style>
+    body {
+      background-color: #FFD633; /* yellow */
+      color: black;
+      font-family: "Dancing Script", cursive;
+      text-align: center;
+      padding: 40px;
+    }
+
+    h1 {
+      font-size: 32px;
+      font-weight: bold;
+      margin-top: 40px;
+    }
+
+    .line {
+      opacity: 0;
+      font-size: 24px;
+      margin: 15px 0;
+      transition: opacity 1s ease-in;
+    }
+
+    .line.show {
+      opacity: 1;
+    }
+
+    .buttons {
+      margin-top: 40px;
+    }
+
+    button {
+      background: black;
+      color: yellow;
+      border: none;
+      padding: 12px 24px;
+      margin: 10px;
+      cursor: pointer;
+      font-size: 18px;
+      border-radius: 6px;
+      transition: transform 0.2s;
+    }
+
+    button:hover {
+      transform: scale(1.1);
+    }
+
+    #finalMessage {
+      font-size: 26px;
+      margin-top: 50px;
+      font-weight: bold;
+      display: none;
+    }
+
+    #nextBtn {
+      display: none;
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Honesty is the best policy</h1>
+
+  <div id="poemContainer">
+    <p class="line">The poem you read, I took the help of ChatGPT.</p>
+    <p class="line">Not entirely but ChatGPT made it sound better</p>
+    <p class="line">Ik ik I am not a good guy, but the one I wrote sounded very bad 😅 .</p>
+    <p class="line">Ik you would have preferred my version,</p>
+    <p class="line">but you deserve the best</p>
+    <p class="line">and I am not the best , SORRYYY ❤️</p>
+    <p class="line">Now you can rate my poem a 1 😭</p>
+  </div>
+
+  <div class="buttons" id="ratingButtons" style="display:none;">
+    <button onclick="showMessage('I deserve it, I am sorryy')">1</button>
+    <button onclick="showMessage('Awwwwwwww thank youuuuuuuuuu')">Not 1</button>
+  </div>
+
+  <div id="finalMessage"></div>
+
+  <!-- Next button -->
+  <button id="nextBtn" onclick="goNext()">Next →</button>
+
+  <script>
+    const lines = document.querySelectorAll(".line");
+    const buttons = document.getElementById("ratingButtons");
+    const finalMessage = document.getElementById("finalMessage");
+    const nextBtn = document.getElementById("nextBtn");
+
+    lines.forEach((line, index) => {
+      setTimeout(() => {
+        line.classList.add("show");
+        if(index === lines.length - 1){
+          setTimeout(() => {
+            buttons.style.display = "block";
+          }, 1500);
+        }
+      }, index * 2500);
+    });
+
+    function showMessage(msg) {
+      document.getElementById("poemContainer").style.display = "none";
+      buttons.style.display = "none";
+      finalMessage.textContent = msg;
+      finalMessage.style.display = "block";
+
+      // Show Next button after rating
+      setTimeout(() => {
+        nextBtn.style.display = "block";
+      }, 1500);
+    }
+
+    function goNext() {
+      window.location.href = "page6.html";
+    }
+  </script>
+</body>
+</html>

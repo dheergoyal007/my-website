@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bellloooooooooooo</title>
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      background-color: #ffe066; /* soft yellow */
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      font-family: 'Pacifico', cursive;
+      position: relative;
+    }
+
+    .write-text {
+      font-size: 6rem;
+      color: black;
+      white-space: nowrap;
+      overflow: hidden;
+      border-right: 2px solid black;
+      width: 0;
+      animation: typing 4s steps(17, end) forwards, blink 0.7s step-end infinite;
+    }
+
+    @keyframes typing {
+      from { width: 0 }
+      to { width: 17ch }
+    }
+
+    @keyframes blink {
+      50% { border-color: transparent; }
+    }
+
+    .next-button {
+      position: absolute;
+      bottom: 30px;
+      right: 30px;
+      padding: 12px 24px;
+      font-size: 1.2rem;
+      background-color: black;
+      color: white;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.5s ease;
+    }
+
+    .show-button {
+      opacity: 1;
+      pointer-events: auto;
+    }
+  </style>
+</head>
+<body>
+  <div class="write-text" id="bellText">Bellloooooooooooo</div>
+
+  <button class="next-button" id="nextBtn">Next →</button>
+
+  <script>
+    // Show the button after typing animation
+    setTimeout(() => {
+      document.getElementById('nextBtn').classList.add('show-button');
+    }, 4200);
+
+    // Redirect to page2.html when clicked
+    document.getElementById('nextBtn').addEventListener('click', () => {
+      window.location.href = "page2.html";
+    });
+  </script>
+</body>
+</html>

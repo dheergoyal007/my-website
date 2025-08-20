@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF‑8"/>
+  <meta name="viewport" content="width=device-width, initial‑scale=1.0"/>
+  <title>Page 3</title>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin:0;
+      padding:40px;
+      background:#ffd95a;
+      color:black;
+      font-family:'Dancing Script', cursive;
+      text-align:center;
+      overflow:hidden;
+      position:relative;
+      height:100vh;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      align-items:center;
+    }
+    #msg1, #rateSection, #msg2 {
+      font-size:2.5rem;
+      opacity:1;
+      transition:opacity 1.2s ease;
+      white-space:pre-line;
+    }
+    #rateSection {
+      display:none;
+      margin-top:20px;
+    }
+    .rate-btn {
+      font-size:2rem;
+      background:black;
+      color:yellow;
+      border:none;
+      padding:10px 20px;
+      border-radius:25px;
+      cursor:pointer;
+      font-family:'Dancing Script', cursive;
+    }
+    #msg2 {
+      display:none;
+      margin-top:40px;
+    }
+    .next-btn {
+      display:none;
+      position:fixed;
+      right:30px;
+      bottom:30px;
+      font-size:1.5rem;
+      background:black;
+      color:yellow;
+      border:none;
+      padding:12px 24px;
+      border-radius:24px;
+      cursor:pointer;
+      font-family:'Dancing Script', cursive;
+    }
+    .next-btn:hover {
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+<body>
+
+  <div id="msg1">
+    HAHAHA I can see you Smilinggg<br>                 hehehehehe
+  </div>
+
+  <div id="rateSection">
+    Rate my Poem out of 5<br><br>
+    <button class="rate-btn" id="rate5">5</button>
+  </div>
+
+  <div id="msg2">
+    I am not Done yet
+  </div>
+
+  <button class="next-btn" id="nextBtn">Next →</button>
+
+  <script>
+    const msg1 = document.getElementById('msg1'),
+          rateSection = document.getElementById('rateSection'),
+          rate5 = document.getElementById('rate5'),
+          msg2 = document.getElementById('msg2'),
+          nextBtn = document.getElementById('nextBtn');
+
+    // Step 1: after 3s fade out msg1 and show rating
+    setTimeout(() => {
+      msg1.style.opacity = 0;
+      setTimeout(() => {
+        msg1.style.display = 'none';
+        rateSection.style.display = 'block';
+      }, 1200);
+    }, 3000);
+
+    // Step 2: when 5 is clicked, hide rate and show msg2
+    rate5.addEventListener('click', () => {
+      rateSection.style.opacity = 0;
+      setTimeout(() => {
+        rateSection.style.display = 'none';
+        msg2.style.display = 'block';
+        msg2.style.opacity = 1;
+        nextBtn.style.display = 'block';
+      }, 1200);
+    });
+
+    // next button will link to page4.html (if you have another)
+    nextBtn.addEventListener('click', () => {
+      window.location.href = 'page4.html'; 
+    });
+  </script>
+
+</body>
+</html>
