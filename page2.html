@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF‑8"/>
+  <meta name="viewport" content="width=device-width, initial‑scale=1.0"/>
+  <title>Something for You</title>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      background-color: #ffd95a;
+      color: black;
+      font-family: 'Dancing Script', cursive;
+      text-align: center;
+      overflow-x: hidden;
+      padding: 60px 20px 120px;
+      line-height: 1.6;
+    }
+    .intro {
+      font-size: 3.4rem;
+      margin-bottom: 40px;
+      opacity: 1;
+      animation: fadeOut 3s ease-in-out 4s forwards;
+    }
+    #scrollCue {
+      display: none;
+      font-size: 1.5rem;
+      margin-bottom: 30px;
+      animation: bounce 2s infinite;
+    }
+    @keyframes fadeOut {
+      to {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+    }
+    @keyframes bounce {
+      0%,100% { transform: translateY(0); }
+      50% { transform: translateY(10px); }
+    }
+    #poem {
+      display: none;
+      margin-top: 20px;
+    }
+    .poem-para {
+      margin-bottom: 4em;
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 1.5s ease, transform 1.5s ease;
+    }
+    .poem-para.visible {
+      opacity: 1 !important;
+      transform: translateY(0) !important;
+    }
+    .poem-para p {
+      margin: 0.3em 0;
+      font-size: 2rem;
+    }
+    .next-button {
+      display: none;
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background-color: black;
+      color: yellow;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 25px;
+      font-size: 1.2rem;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+      font-family: 'Dancing Script', cursive;
+    }
+    .next-button:hover {
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+<body>
+  <div id="intro" class="intro">
+    Ummmm I wrote a little something for you, hope you like it.
+  </div>
+
+  <div id="scrollCue">↓ Scroll down ↓</div>
+
+  <div id="poem">
+    <div class="poem-para">
+      <p>You say you're not enough — but love,</p>
+      <p>Even the rain doesn’t ask for permission to fall.</p>
+      <p>It just does. And somehow, it still makes things grow.</p>
+    </div>
+    <div class="poem-para">
+      <p>You carry the world on those tired shoulders,</p>
+      <p>With deadlines, doubts, and dreams in tow —</p>
+      <p>Yet you smile, like no one’s watching. That’s magic, you know?</p>
+    </div>
+    <div class="poem-para">
+      <p>You're like dark chocolate — rich, complex, never too sweet.</p>
+      <p>Not for everyone, maybe — but unforgettable for those lucky enough to taste your presence.</p>
+    </div>
+    <div class="poem-para">
+      <p>You worry you’re not doing enough.</p>
+      <p>But showing up, again and again? That’s more than enough. That’s strength.</p>
+    </div>
+    <div class="poem-para">
+      <p>And on the days when the rain matches your mood — just remember:</p>
+      <p>Even the sky has to cry before it clears.</p>
+    </div>
+    <div class="poem-para">
+      <p>So breathe. Be. Break a little, heal a little.</p>
+      <p>You don’t need to prove your worth — you already are <strong>worth</strong> the world.</p>
+    </div>
+    <div class="poem-para">
+      <p>And if you forget, I’ll remind you. Again and again. Just like the rain.</p>
+    </div>
+  </div>
+
+  <a href="page3.html">
+    <button id="nextBtn" class="next-button">Next →</button>
+  </a>
+
+  <script>
+    const intro = document.getElementById('intro');
+    const scrollCue = document.getElementById('scrollCue');
+    const poem = document.getElementById('poem');
+    const paras = document.querySelectorAll('.poem-para');
+    const rain = document.getElementById('rain');
+    const nextBtn = document.getElementById('nextBtn');
+
+
+
+    setTimeout(() => {
+      scrollCue.style.display = 'block';
+      poem.style.display = 'block';
+    }, 7000);
+
+    window.addEventListener('scroll', () => {
+      scrollCue.style.display = 'none';
+      let visibleCount = 0;
+      paras.forEach(para => {
+        const rect = para.getBoundingClientRect();
+        if (rect.top < window.innerHeight - 100) {
+          para.classList.add('visible');
+          visibleCount++;
+        }
+      });
+      if (visibleCount === paras.length) {
+        nextBtn.style.display = 'block';
+      }
+    });
+  </script>
+</body>
+</html>
